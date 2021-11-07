@@ -33,16 +33,26 @@ client.on('messageCreate', (message) => {
       .react('🐄')
       .then(() => console.log(`Reacted to message "${message.content}"`))
       .catch(console.error);
+
+    let opts: IOptions = {
+      text: 'Hello from typescript!',
+      e: '^^',
+      r: true,
+    };
+
+    let output: string = cowsay.say(opts);
+    output = `
+  \`\`\`
+  ${output}
+  \`\`\`
+  `;
+    message
+      .reply({
+        content: output,
+      })
+      .then(() => console.log(`Reacted to message "${message.content}"`))
+      .catch(console.error);
   }
-
-  let opts: IOptions = {
-    text: 'Hello from typescript!',
-    e: '^^',
-    r: true,
-  };
-
-  let output: string = cowsay.say(opts);
-  console.log(`\`\`\`${output}\`\`\``);
 });
 
 client.login(process.env.TOKEN);
