@@ -51,8 +51,15 @@ client.on('messageCreate', (message) => {
         content: output,
       })
       .then(() => console.log(`Reacted to message "${message.content}"`))
-      .catch(console.error);
-  }
-});
+      .catch((error) => {
+  if (error.code === 50035) {
+    message.reply({
+      content: 'Large',
+    });
+  };
+      })
+    });
+
+
 
 client.login(process.env.TOKEN);
