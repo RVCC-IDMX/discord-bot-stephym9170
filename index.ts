@@ -37,7 +37,7 @@ client.on('messageCreate', (message) => {
     let opts: IOptions = {
       text: 'Hello from typescript!',
       e: '^^',
-      r: true,
+      f: 'tweety-bird',
     };
 
     let output: string = cowsay.say(opts);
