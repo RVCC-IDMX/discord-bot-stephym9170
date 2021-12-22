@@ -26,14 +26,14 @@ module.exports = {
       .setTitle(city.name)
       .setThumbnail(
         `http://openweatherapp.org/img/wn/${city.weather[0].icon}@2x.png`
-      )
-      .setDescription(city.weather[0].description);
-      .addFields(
-        fields:{
-              name: 'Current Temperature'
-              value: `${city.main.temp} °F`
-         },
-      )
+      );
+    //.setDescription(city.weather[0].description),
+    //.addFields(
+    // fields:{
+    //name: 'Current Temperature',
+    //value: `${city.main.temp} °F`
 
-  }
-    await message.channel.send(embed);
+    //)
+    return message.channel.send(embed);
+  },
+};
