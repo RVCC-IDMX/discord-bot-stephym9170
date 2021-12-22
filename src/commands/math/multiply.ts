@@ -2,11 +2,10 @@ import { Message } from 'discord.js';
 
 export default {
   callback: (message: Message, ...args: string[]) => {
-    let product = 0;
-
-    for (const arg of args) {
-      product *= parseInt(arg);
-    }
+    let product = 1;
+    args.forEach((arg: string) => {
+      product *= parseInt(arg, 10);
+    });
     message.reply(`The product is ${product}`);
   },
 };

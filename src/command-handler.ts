@@ -47,7 +47,7 @@ export default (client: Client) => {
     if (!channels.includes(message.channel.id)) return;
     if (message.author.bot) return;
 
-    const args = message.content.slice(PREFIX.length).split(/ +/);
+    const args = message.content.slice(PREFIX.length).trim().split(/ +/);
     const commandName = args.shift()!.toLowerCase();
 
     if (!commands[commandName]) {
