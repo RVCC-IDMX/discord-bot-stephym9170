@@ -23,7 +23,7 @@ export default (client: Client) => {
 
   for (const command of commandFiles) {
     let commandFile = require(command);
-    if (commandFile.default) commandFile.default;
+    if (commandFile.default) commandFile = commandFile.default;
 
     const split = command.replace(/\\/g, '/').split('/');
     const commandName = split[split.length - 1].replace(suffix, '');
@@ -45,12 +45,10 @@ export default (client: Client) => {
   client.on('messageCreate', (message) => {
     if (!message.content.startsWith(PREFIX)) return;
     if (!channels.includes(message.channel.id)) return;
-    if (message.author.bot || !message.content.startsWith('sm#')) {
-      return;
-    }
+    if (message.author.bot) return;
 
-    const args = message.content.slice(1).split(/ +/);
-    const commandName = args.shift()!.toLowerCase;
+    const args = message.content.slice(PREFIX.length).split(/ +/);
+    const commandName = args.shift()!.toLowerCase();
 
     if (!commands[commandName]) {
       return;

@@ -15,6 +15,8 @@ client.on('ready', () => {
 client.on('ready', () => {
   let handler = require('./command-handler');
   if (handler.default) handler = handler.default;
+
+  handler(client);
 });
 
 //client.on('messageCreate', (message) => {
